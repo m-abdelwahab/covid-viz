@@ -1,24 +1,12 @@
-import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import "./layout.css"
+import React from "react";
+import "./layout.css";
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
-    <>
-        <main>{children}</main>
-    </>
-  )
-}
+    <div>
+      <main>{children}</main>
+    </div>
+  );
+};
 
-
-export default Layout
+export default Layout;

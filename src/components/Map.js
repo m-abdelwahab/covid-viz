@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  formatNumber,
   formatDate,
   getMinNumInCountries,
   getMaxNumInCountries
@@ -17,23 +16,23 @@ import {
   ComposableMap,
   Geographies,
   Geography,
-  Graticule
+  Graticule,
+  Sphere
 } from "react-simple-maps";
-const geoUrl =
-  "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+const geoUrl = process.env.GATSBY_MAP;
 
-// const rounded = num => {
-//   if (num > 1000000000) {
-//     return Math.round(num / 100000000) / 10 + "Bn";
-//   } else if (num > 1000000) {
-//     return Math.round(num / 100000) / 10 + "M";
-//   } else {
-//     return Math.round(num / 100) / 10 + "K";
-//   }
-// };
+const rounded = num => {
+  if (num > 1000000000) {
+    return Math.round(num / 100000000) / 10 + "Bn";
+  } else if (num > 1000000) {
+    return Math.round(num / 100000) / 10 + "M";
+  } else {
+    return Math.round(num / 100) / 10 + "K";
+  }
+};
 
 const Map = ({ setTooltipContent, url }) => {
-  const [{ data, isError }] = useDataApi({
+  const [{ data, isLoading, isError }] = useDataApi({
     initUrl: url,
     defaultData: {}
   });
@@ -51,10 +50,11 @@ const Map = ({ setTooltipContent, url }) => {
   });
   let min = getMinNumInCountries(countriesData);
   let max = getMaxNumInCountries(countriesData);
+
   console.log(max);
 
   const colorScale = scaleLog()
-    .domain([min, max])
+    .domain([1, 67800])
     .range(["#E6A6A6", "#E60000"]);
 
   return (
@@ -68,78 +68,67 @@ const Map = ({ setTooltipContent, url }) => {
           <StatSubtitle>
             Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
           </StatSubtitle>
-          {data && (
-            <>
-              <>
-                <ComposableMap data-tip="" projectionConfig={{ scale: 200 }}>
-                  <ZoomableGroup>
-                    <Graticule stroke="#E4E5E6" strokeWidth={1} />
-                    <Geographies geography={geoUrl}>
-                      {({ geographies }) => {
-                        console.log(geographies);
-                        geographies &&
-                          geographies.map(geo => {
-                            const d = countriesData.find(
-                              country => country.iso3 === geo.properties.ISO_A3
-                            );
-                            return (
-                              <Geography
-                                key={geo.rsmKey}
-                                geography={geo}
-                                fill={d ? colorScale(d.confirmed) : "#D6D6DA"}
-                                onMouseEnter={() => {
-                                  const { NAME, ISO_A3 } = geo.properties;
+          <ComposableMap data-tip="" projectionConfig={{ scale: 150 }}>
+            <ZoomableGroup>
+              <Graticule stroke="#E4E5E6" strokeWidth={1} />
+              <Geographies geography={geoUrl}>
+                {({ geographies }) =>
+                  geographies.map(geo => {
+                    const d = countriesData.find(
+                      country => country.iso3 === geo.properties.ISO_A3
+                    );
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill={d ? colorScale(d.confirmed) : "#D6D6DA"}
+                        onMouseEnter={() => {
+                          const { NAME, ISO_A3 } = geo.properties;
 
-                                  const country = countriesData.find(
-                                    country => country.iso3 === ISO_A3
-                                  );
-                                  const {
-                                    confirmed = 0,
-                                    deaths = 0,
-                                    recovered = 0,
-                                    lastUpdate
-                                  } = country || {};
-                                  setTooltipContent(
-                                    <CountryStats>
-                                      <h5>{NAME}</h5>
-                                      <p>Confirmed: {confirmed} </p>
-                                      <p>Recovered: {deaths}</p>
-                                      <p>Deaths: {recovered}</p>
-                                      <p>
-                                        Last update:{" "}
-                                        {lastUpdate !== undefined
-                                          ? format(
-                                              new Date(lastUpdate),
-                                              "MM/dd/yyyy"
-                                            )
-                                          : "-"}
-                                      </p>
-                                    </CountryStats>
-                                  );
-                                }}
-                                onMouseLeave={() => {
-                                  setTooltipContent("");
-                                }}
-                                style={{
-                                  hover: {
-                                    fill: "#F53",
-                                    outline: "none"
-                                  },
-                                  pressed: {
-                                    fill: "#E42",
-                                    outline: "none"
-                                  }
-                                }}
-                              />
-                            );
-                          });
-                      }}
-                    </Geographies>
-                  </ZoomableGroup>
-                </ComposableMap>
-              </>
-            </>
-          )}
+                          const country = countriesData.find(
+                            country => country.iso3 === ISO_A3
+                          );
+                          const {
+                            confirmed = 0,
+                            deaths = 0,
+                            recovered = 0,
+                            lastUpdate
+                          } = country || {};
+                          setTooltipContent(
+                            <CountryStats>
+                              <h5>{NAME}</h5>
+                              <p>Confirmed: {confirmed} </p>
+                              <p>Recovered: {deaths}</p>
+                              <p>Deaths: {recovered}</p>
+                              <p>
+                                Last update:{" "}
+                                {lastUpdate !== undefined
+                                  ? format(new Date(lastUpdate), "MM/dd/yyyy")
+                                  : "-"}
+                              </p>
+                            </CountryStats>
+                          );
+                        }}
+                        onMouseLeave={() => {
+                          setTooltipContent("");
+                        }}
+                        style={{
+                          hover: {
+                            fill: "#F53",
+                            outline: "none"
+                          },
+                          pressed: {
+                            fill: "#E42",
+                            outline: "none"
+                          }
+                        }}
+                      />
+                    );
+                  })
+                }
+              </Geographies>
+            </ZoomableGroup>
+          </ComposableMap>
         </>
       )}
     </div>

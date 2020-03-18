@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Layout from "../components/layout";
+// import Layout from "../components/layout";
 import SEO from "../components/seo";
 import GlobalStats from "../components/GlobalStats";
 import ThemeProvider from "../contexts/themeProvider";
