@@ -5,7 +5,7 @@ const defaultMode = acceptModes[0];
 
 export const useDarkMode = (initialValue = defaultMode) => {
   const [mode, setMode] = useState(
-    () =>  initialValue
+    () => window.localStorage.getItem("mode") || initialValue
   );
 
   const toggleMode = () => {
@@ -14,7 +14,7 @@ export const useDarkMode = (initialValue = defaultMode) => {
   };
 
   useEffect(() => {
-    
+    window.localStorage.setItem("mode", mode);
   }, [mode]);
 
   return [mode, toggleMode];

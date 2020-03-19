@@ -13,5 +13,6 @@ export default Hero;
 
 const Section = styled.div`
   height: 100vh;
-  background-color: whitesmoke;
+  background-color: ${({ theme }) => theme.colors.background};
+  color: ${({ theme }) => theme.colors.text};
 `;

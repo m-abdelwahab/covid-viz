@@ -128,9 +128,11 @@ const CountryStats = styled.div`
   p {
     font-size: 1.2rem;
     font-weight: 700;
+    margin: 10px 0;
   }
 
   h5 {
+    margin: 10px 0;
     font-size: 1.25rem;
     font-weight: 600;
   }

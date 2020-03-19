@@ -27,7 +27,8 @@ const StatTitle = styled.h2`
 const StatSubtitle = styled.span`
   font-size: 14px;
   opacity: 0.8;
-  color: black;
+  color: ${({ theme }) => theme.colors.text};
+  /* color:black; */
 `;
 
 const GlobalStats = ({ url, title }) => {

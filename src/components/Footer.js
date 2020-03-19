@@ -25,16 +25,32 @@ const GithubLink = styled.a`
 const Footer = () => (
   <FooterContainer>
     <Copy>
-      <GithubLink
-        href="https://github.com/m-abdelwahab"
-        target="_blank"
-        rel="nofollow noopener noreferrer"
-      >
-        <div>
-          Designed &amp; Built with ❤ by Mahmoud Abdelwahab
-          {` `}
-        </div>
-      </GithubLink>
+      <div>
+        Designed &amp; Built with ❤ by{" "}
+        <GithubLink
+          href="https://github.com/m-abdelwahab"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          Mahmoud Abdelwahab.
+        </GithubLink>{" "}
+        Icons from{" "}
+        <a
+          href="https://thenounproject.com/"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          The Noun Project
+        </a>
+        , inspired by{" "}
+        <a
+          href="https://staythefuckhome.com"
+          target="_blank"
+          rel="nofollow noopener noreferrer"
+        >
+          staythefuckhome.com
+        </a>
+      </div>
     </Copy>
   </FooterContainer>
 );

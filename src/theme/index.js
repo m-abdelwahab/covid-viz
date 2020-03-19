@@ -60,7 +60,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.colors.primary};
   }
   .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0px auto 8rem auto;
     min-height: 100vh;
   }
