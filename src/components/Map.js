@@ -1,35 +1,21 @@
 import React from "react";
-import {
-  formatDate,
-  getMinNumInCountries,
-  getMaxNumInCountries
-} from "../utils";
+import { getMaxNumInCountries } from "../utils";
 import Row from "./Row";
 import Error from "./Error";
 import styled from "styled-components";
 import useDataApi from "../hooks/useDataApi";
 import { scaleLog } from "d3-scale";
 import { format } from "date-fns";
-
+import Fade from "react-reveal/Fade";
 import {
   ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
-  Graticule,
-  Sphere
+  Graticule
+  // Sphere
 } from "react-simple-maps";
 const geoUrl = process.env.GATSBY_MAP;
-
-const rounded = num => {
-  if (num > 1000000000) {
-    return Math.round(num / 100000000) / 10 + "Bn";
-  } else if (num > 1000000) {
-    return Math.round(num / 100000) / 10 + "M";
-  } else {
-    return Math.round(num / 100) / 10 + "K";
-  }
-};
 
 const Map = ({ setTooltipContent, url }) => {
   const [{ data, isLoading, isError }] = useDataApi({
@@ -48,13 +34,10 @@ const Map = ({ setTooltipContent, url }) => {
       lastUpdate: lastUpdate
     });
   });
-  let min = getMinNumInCountries(countriesData);
+
   let max = getMaxNumInCountries(countriesData);
-
-  console.log(max);
-
   const colorScale = scaleLog()
-    .domain([1, 67800])
+    .domain([1, max])
     .range(["#E6A6A6", "#E60000"]);
 
   return (
@@ -64,10 +47,7 @@ const Map = ({ setTooltipContent, url }) => {
           <Error message="There was an error fetching country data" />
         </Row>
       ) : (
-        <>
-          <StatSubtitle>
-            Last updated: {data?.lastUpdate && formatDate(data.lastUpdate)}
-          </StatSubtitle>
+        <Fade delay={1300}>
           <ComposableMap data-tip="" projectionConfig={{ scale: 150 }}>
             <ZoomableGroup>
               <Graticule stroke="#E4E5E6" strokeWidth={1} />
@@ -97,9 +77,9 @@ const Map = ({ setTooltipContent, url }) => {
                           setTooltipContent(
                             <CountryStats>
                               <h5>{NAME}</h5>
-                              <p>Confirmed: {confirmed} </p>
-                              <p>Recovered: {deaths}</p>
-                              <p>Deaths: {recovered}</p>
+                              <p> 😷{confirmed} </p>
+                              <p>💀{deaths}</p>
+                              <p>🙌{recovered}</p>
                               <p>
                                 Last update:{" "}
                                 {lastUpdate !== undefined
@@ -114,12 +94,12 @@ const Map = ({ setTooltipContent, url }) => {
                         }}
                         style={{
                           hover: {
-                            fill: "#F53",
-                            outline: "none"
+                            fill: "#696969",
+                            outline: "#000000"
                           },
                           pressed: {
                             fill: "#E42",
-                            outline: "none"
+                            outline: "#000000"
                           }
                         }}
                       />
@@ -129,25 +109,25 @@ const Map = ({ setTooltipContent, url }) => {
               </Geographies>
             </ZoomableGroup>
           </ComposableMap>
-        </>
+        </Fade>
       )}
+      <Tip>
+        You can see the stats of an individual country by clicking on it!
+      </Tip>
     </div>
   );
 };
 
 export default Map;
 
-const StatSubtitle = styled.span`
-  font-size: 14px;
-  opacity: 0.8;
-  color: black;
-`;
 const CountryStats = styled.div`
   display: flex;
   flex-direction: column;
+  /* border-radius: 100px; */
 
   p {
-    font-size: 1rem;
+    font-size: 1.2rem;
+    font-weight: 700;
   }
 
   h5 {
@@ -164,4 +144,12 @@ const CountryStats = styled.div`
       font-size: 4.44vw;
     }
   }
+`;
+
+const Tip = styled.h1`
+  font-size: 1em;
+  font-weight: 300;
+  color: ${({ theme }) => theme.colors.text};
+  display: block;
+  text-align: center;
 `;

@@ -12,7 +12,7 @@ export const lightTheme = {
     primary: "#4caf50",
     background: "#F4F6F8",
     backgroundLight: "#ffffff",
-    text: "#212b36",
+    text: "#000000",
     textLight: "#8E9EAC",
     ...CommonColors
   }
@@ -67,5 +67,16 @@ export const GlobalStyles = createGlobalStyle`
   .center-text {
     text-align: center;
   }
-  
+  .tooltip {
+  color: ${props => props.theme.colors.text} !important;
+  background-color: ${props => props.theme.colors.background} !important;
+  box-shadow: 4px 6px 19px -8px rgba(0,0,0,0.75);
+  &.place-top {
+  &:after {
+  border-top-color: ${props => props.theme.colors.background} !important;
+  border-top-style: solid !important;
+  border-top-width: 6px !important;
+  }
+ }
+}
 `;

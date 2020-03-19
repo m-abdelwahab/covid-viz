@@ -1,11 +1,17 @@
 import React from "react";
-import "./layout.css";
+import Footer from "./Footer";
+import ThemeProvider from "../contexts/themeProvider";
+import ThemeToggle from "../components/ThemeToggle";
 
 const Layout = ({ children }) => {
   return (
-    <div>
-      <main>{children}</main>
-    </div>
+    <ThemeProvider>
+      <main>
+        <ThemeToggle />
+        {children}
+        <Footer />
+      </main>
+    </ThemeProvider>
   );
 };
 

@@ -1,19 +1,18 @@
 import React, { useState } from "react";
-// import Layout from "../components/layout";
+import Layout from "../components/layout";
 import SEO from "../components/seo";
 import GlobalStats from "../components/GlobalStats";
-import ThemeProvider from "../contexts/themeProvider";
-import ThemeToggle from "../components/ThemeToggle";
 import Map from "../components/Map";
 import ReactTooltip from "react-tooltip";
+import Hero from "../components/Hero";
 
 const IndexPage = () => {
   const [content, setContent] = useState(``);
   return (
-    <ThemeProvider>
+    <Layout>
       <SEO title="Home" />
       <main className="container">
-        <ThemeToggle />
+        <Hero />
         <GlobalStats
           title="Global Case"
           url={process.env.GATSBY_API_ENDPOINT}
@@ -22,9 +21,10 @@ const IndexPage = () => {
           url={`${process.env.GATSBY_API_ENDPOINT}/confirmed`}
           setTooltipContent={setContent}
         />
-        <ReactTooltip>{content}</ReactTooltip>
+        <ReactTooltip className="tooltip">{content}</ReactTooltip>
+        
       </main>
-    </ThemeProvider>
+    </Layout>
   );
 };
 

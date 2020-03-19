@@ -8,12 +8,13 @@ const CardWrapper = styled.div`
   min-width: 250px;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.colors.backgroundLight};
+  box-shadow: 4px 6px 19px -8px rgba(0, 0, 0, 0.75);
 
   &.pad20 {
     padding: 20px;
   }
   h2 {
-    margin-bottom: 8px;
+    margin:0.5em auto ;
     font-size: 2em;
     color: ${props => {
       switch (props.info) {
