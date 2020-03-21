@@ -7,7 +7,7 @@ const Error = ({ message }) => {
       <h4>{message}</h4>
       <h2>
         <span role="img" aria-label="error">
-          🙅‍♂️
+          😔
         </span>
       </h2>
     </Card>

@@ -6,6 +6,7 @@ import styled from "styled-components";
 import useDataApi from "../hooks/useDataApi";
 import { scaleLog } from "d3-scale";
 import { format } from "date-fns";
+import { RefreshIcon } from "./icons";
 import Fade from "react-reveal/Fade";
 import {
   ZoomableGroup,
@@ -18,7 +19,7 @@ import {
 const geoUrl = process.env.GATSBY_MAP;
 
 const Map = ({ setTooltipContent, url }) => {
-  const [{ data, isLoading, isError }] = useDataApi({
+  const [{ data, isError }] = useDataApi({
     initUrl: url,
     defaultData: {}
   });
@@ -77,11 +78,19 @@ const Map = ({ setTooltipContent, url }) => {
                           setTooltipContent(
                             <CountryStats>
                               <h5>{NAME}</h5>
-                              <p> 😷{confirmed} </p>
-                              <p>💀{deaths}</p>
-                              <p>🙌{recovered}</p>
                               <p>
-                                Last update:{" "}
+                                <span role="img">😷</span> {confirmed}{" "}
+                              </p>
+                              <p>
+                                <span role="img">💀</span>
+                                {deaths}
+                              </p>
+                              <p>
+                                <span role="img">🙌</span>
+                                {recovered}
+                              </p>
+                              <p>
+                                Last updated{" "}
                                 {lastUpdate !== undefined
                                   ? format(new Date(lastUpdate), "MM/dd/yyyy")
                                   : "-"}

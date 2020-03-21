@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
 import { useTheme } from "../contexts/themeProvider";
-import { mediaQuery } from "../theme";
 import MoonIcon from "../components/icons/MoonIcon";
 import SunIcon from "../components/icons/SunIcon";
 

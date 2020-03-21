@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import data from "../data/misconceptions";
+import { data } from "../data/misconceptions";
 
 const Misconceptions = () => {
   return (
     <Section>
-      <Title>Common Misconceptions</Title>
+      <Title>Common Questions & Misconceptions</Title>
       {data.map((item, i) => {
         return (
           <Container key={i}>
@@ -39,11 +39,12 @@ const Container = styled.div`
   border-top: 0.5px solid #d2d6dc;
   border-bottom: 0.5px solid #d2d6dc;
   justify-content: space-between;
-  width: 85%;
+  width: 100%;
   margin: 0 auto;
   padding: 2em 0;
   @media (max-width: 1000px) {
     flex-direction: column;
+    margin-right:1em;
   }
 `;
 const Question = styled.h2`
@@ -51,8 +52,10 @@ const Question = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   width: 50%;
+  margin-right: 1em;
   @media (max-width: 1000px) {
     width: 100%;
+    padding:0 1em;
   }
 `;
 
@@ -60,7 +63,10 @@ const Answer = styled.h2`
   color: ${({ theme }) => theme.colors.text};
   font-size: 20px;
   width: 100%;
+  line-height: 1.5;
+  font-weight: 300;
   @media (max-width: 1000px) {
     width: 100%;
+    padding:0 1em;
   }
 `;

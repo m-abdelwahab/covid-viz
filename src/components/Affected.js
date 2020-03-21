@@ -2,27 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import Row from "./Row";
 import { ChildrenIcon, ElderlyIcon, ImmunityIcon } from "../components/icons/";
+import Fade from "react-reveal";
 
 const Affected = () => {
   return (
     <Section>
       <Heading> Who is affected by this virus?</Heading>
       <Row>
-        <Card>
-          <ChildrenIcon />
-          <h2>Children</h2>
-        </Card>
-        <Card>
-          <ElderlyIcon />
-          <h2>The Elderly</h2>
-        </Card>
-        <Card>
-          <ImmunityIcon />
-          <h2>
-            Immunosuppressed <br />
-            Individuals
-          </h2>
-        </Card>
+        <Fade top delay={300}>
+          <Card>
+            <ChildrenIcon />
+            <h2>Children</h2>
+          </Card>
+        </Fade>
+
+        <Fade top delay={600}>
+          <Card>
+            <ElderlyIcon />
+            <h2>The Elderly</h2>
+          </Card>
+        </Fade>
+
+        <Fade top delay={900}>
+          <Card>
+            <ImmunityIcon />
+            <h2>
+              Immunosuppressed <br />
+              Individuals
+            </h2>
+          </Card>
+        </Fade>
       </Row>
     </Section>
   );
@@ -38,6 +47,7 @@ const Heading = styled.h1`
 const Section = styled.div`
   height: auto;
   min-height: 100vh;
+  margin-top: 5em;
   svg {
     width: 100px;
     height: 100px;

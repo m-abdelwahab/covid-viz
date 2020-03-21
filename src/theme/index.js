@@ -40,6 +40,9 @@ export const mediaQuery = {
 };
 
 export const GlobalStyles = createGlobalStyle`
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');  
+
   *,
   *::after,
   *::before {
@@ -51,7 +54,7 @@ export const GlobalStyles = createGlobalStyle`
     color: ${props => props.theme.colors.text};
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;    
     transition: all 0.25s linear;
   }
 
