@@ -16,10 +16,10 @@ const IndexPage = () => {
       <main className="container">
         <GlobalStats
           title="Global Stats"
-          url={process.env.GATSBY_API_ENDPOINT}
+          url={"https://covid19.mathdro.id/api"}
         />
         <Map
-          url={`${process.env.GATSBY_API_ENDPOINT}/confirmed`}
+          url={"https://covid19.mathdro.id/api/confirmed"}
           setTooltipContent={setContent}
         />
         <ReactTooltip className="tooltip">{content}</ReactTooltip>
