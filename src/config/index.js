@@ -1,8 +1,8 @@
 module.exports = {
-    title: 'Mahmoud Abdelwahab | Front-end Software Engineer',
-    description: 'Mahmoud Abdelwahab is a Front-end software engineer based in Cairo, Egypt. Building at the intersection of Design and Development. who specializes in developing (and occasionally designing) exceptional, high-quality websites and applications.',
-    keywords: 'Mahmoud Abdelwahab, Mahmoud, Abdelwahab, thisismahmoud, software engineer, front-end engineer, web developer, javascript',
-    url: 'https://mahmoudabdelwahab.tech',
+    title: 'COVID-19 VIZ',
+    description: 'Keep track of the latest ',
+    keywords: 'COVID-19, COVID, coronavirus, corona, virus, pandemic',
+    url: 'https://covid-viz.netlify.com',
     language: 'en_US',
     googleAnalyticsID: '',
     author: 'Mahmoud Abdelwahab',
@@ -43,17 +43,6 @@ module.exports = {
             handle: 'thisismahmoud',
         },
     ],
-  
-    navLinks: [
-        {
-            name: 'About',
-            url: '/about'
-        },
-        {
-            name: 'Blog',
-            url: '/blog'
-        }
-    ],
-  
+    
   }
   

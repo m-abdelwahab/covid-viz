@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const acceptModes = ["light", "dark"];
-const defaultMode = acceptModes[0];
+const defaultMode = acceptModes[1];
 
 export const useDarkMode = (initialValue = defaultMode) => {
   const [mode, setMode] = useState(
