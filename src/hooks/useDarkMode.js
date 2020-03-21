@@ -14,9 +14,9 @@ export const useDarkMode = (initialValue = defaultMode) => {
     setMode(nextMode);
   };
 
-  useEffect(() => {
-    // window.localStorage.setItem("mode", mode);
-  }, [mode]);
+  // useEffect(() => {
+  //   // window.localStorage.setItem("mode", mode);
+  // }, [mode]);
 
   return [mode, toggleMode];
 };
