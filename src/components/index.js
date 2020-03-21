@@ -3,7 +3,7 @@ import Card from "./Card";
 import Error from "./Error";
 import Footer from "./Footer";
 import GlobalStats from "./GlobalStats";
-import Layout from "./Layout";
+import Layout from "./layout";
 import Map from "./Map";
 import Misconceptions from "./Misconceptions";
 import Placeholder from "./Placeholder";
