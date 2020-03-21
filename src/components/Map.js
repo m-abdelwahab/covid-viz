@@ -6,7 +6,6 @@ import styled from "styled-components";
 import useDataApi from "../hooks/useDataApi";
 import { scaleLog } from "d3-scale";
 import { format } from "date-fns";
-import { RefreshIcon } from "./icons";
 import Fade from "react-reveal/Fade";
 import {
   ZoomableGroup,
@@ -14,7 +13,6 @@ import {
   Geographies,
   Geography,
   Graticule
-  // Sphere
 } from "react-simple-maps";
 const geoUrl =
   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
