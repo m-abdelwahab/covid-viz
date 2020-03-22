@@ -41,8 +41,6 @@ export const mediaQuery = {
 
 export const GlobalStyles = createGlobalStyle`
 
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');  
-
   *,
   *::after,
   *::before {
