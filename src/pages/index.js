@@ -1,18 +1,18 @@
-import React, { useState, Suspense } from "react";
+import React, { useState } from "react";
 import ReactTooltip from "react-tooltip";
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Map from "../components/Map"
-import StayHome from "../components/StayHome"
-import Misconceptions from "../components/Misconceptions"
-import Affected from "../components/Affected"
-import Spinner from "../components/Spinner"
-import GlobalStats from "../components/GlobalStats"
+import {
+  Layout,
+  Affected,
+  GlobalStats,
+  Map,
+  Misconceptions,
+  SEO,
+  StayHome,
+} from "../components";
 
 const IndexPage = () => {
   const [content, setContent] = useState(``);
   return (
-    <Suspense fallback={<Spinner />}>
       <Layout>
         <SEO title="Home" />
         <main className="container">
@@ -30,7 +30,6 @@ const IndexPage = () => {
           <Misconceptions />
         </main>
       </Layout>
-    </Suspense>
   );
 };
 

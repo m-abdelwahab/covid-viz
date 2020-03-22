@@ -69,7 +69,7 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
-      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link>
+      {/* <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet"></link> */}
     </Helmet>
   )
 }
