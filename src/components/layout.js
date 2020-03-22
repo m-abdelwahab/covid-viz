@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import ThemeProvider from "../contexts/themeProvider";
-import { Footer, ThemeToggle } from "./index";
+import Footer from "./Footer"
+import ThemeToggle from "./ThemeToggle"
 
 const Layout = ({ children }) => {
   return (
