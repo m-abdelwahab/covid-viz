@@ -14,6 +14,7 @@ const ButtonSwitch = styled.button`
   position: fixed;
   top: 5%;
   right: 5%;
+  z-index: 99;
   /* border-radius: 25px; */
   /* box-shadow: 0 1px 4px rgba(0, 50, 50, 0.08); */
   svg {
